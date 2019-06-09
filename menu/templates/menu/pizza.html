@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Menu - Pizza</title>
+{% endblock %}
+
+
+{% block content %}
+  <body>
+    <p>&nbsp;</p>
+    <ul>
+      <li class="li_category_active">Pizza</li>
+      <li class="li_category"><a href="/menu/drinks/">Drinks</a></li>
+    </ul>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <div class="row">
+      {% for pizza in pizza %}
+      <div class="column">
+          <img src="{{ pizza.image.url }}" alt="Picture of pizza" class="pizza_picture">
+          <h2 id="pizzatext">{{ pizza.name}}</h2>
+          <p class="toppings">{{ pizza.description}}</p>
+          <p class="price">{{ pizza.price}}$</p>
+          <div class="order_button">
+            <button type="button" onclick="alert('Cart Updated!')">Order Now</button>
+          </div>
+        </div>
+        {% endfor %}
+    </div>
+
+  </body>
+{% endblock %}

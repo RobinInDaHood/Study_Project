@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Pitseria - Menu</title>
+{% endblock %}
+
+{% block content %}
+  <body>
+    <p>&nbsp;</p>
+    <ul>
+      {% for category in categories %}
+      <li class="li_category"><a href="{{ category.name}}">{{ category.name }}</a></li>
+      {% endfor %}
+    </ul>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </body>
+{% endblock %}

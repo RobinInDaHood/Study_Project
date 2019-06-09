@@ -1,0 +1,39 @@
+{% load static from staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+    {% block title %}
+      <title> Pitseria </title>
+    {% endblock %}
+    <div class="img_navbar"></div>
+  </head>
+
+  <body>
+    <ul id="ul_nav">
+      <li class="li_nav"><a href="/home">Home</a></li>
+      <li class="li_nav"><a href="/menu">Menu</a></li>
+      <li class="li_nav"><a href="/shop">Shop</a></li>
+      <li class="li_nav"><a href="/about">About</a></li>
+      <li class="li_nav"><a href="/cart">Cart</a></li>
+      <li class="li_nav"><a href="/admin">Admin</a></li>
+
+      {% if user.is_anonymous %}
+      <li style="float:right" class="li_nav"><a href="/accounts/login">Log in</a></li>
+      <li style="float:right" class="li_nav"><a href="/signup">Register</a></li>
+      {% endif %}
+      {% if user.is_authenticated %}
+      <li style="float:right" class="li_nav"><a href="/accounts/logout">Log out</a></li>
+      <li style="float:right" id="Welcome">Logged in as: {{ user.username }}</li>
+      {% endif %}
+
+    </ul>
+      <div class="wrapper">
+        {% block content %}
+        {% endblock %}
+      </div>
+      <img id="pepe" src="/static/pepe2.gif" alt="Pepe">
+  </body>
+</html>

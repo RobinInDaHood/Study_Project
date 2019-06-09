@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <body>
+    <h1>Create an Account </h1>
+      <form method="post">
+        <div id="CreateAccountDiv">
+          {% csrf_token %}
+          <label>
+              Username:
+              {{ signup.username }}
+              <div id="info">
+              <p>Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</p>
+              </div>
+          </label>
+          <label>
+              Password:
+              {{ signup.password1 }}
+              <div id="info">
+                <p>&middot; Your password can't be too similar to your other personal information.</p>
+                <p>&middot; Your password must contain at least 8 characters.</p>
+                <p>&middot; Your password can't be a commonly used password.</p>
+                <p>&middot; Your password can't be entirely numeric.</p>
+              </div>
+          </label>
+          <label>
+              Confirm Password:
+              {{ signup.password2 }}
+              <div id="info">
+              <p>Enter the same password as before, for verification.</p>
+              </div>
+          </label>
+          {% if signup.errors %}
+            <p id='alert'>Input Error Detected</p>
+            <p id='alert'>Please Check for spelling Errors!</p>
+          {% endif %}
+        <input id="CreateAccountButton" type="submit" value="Create Account">
+        </div>
+      </form>
+  </body>
+{% endblock %}

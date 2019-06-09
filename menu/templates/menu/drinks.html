@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Menu - Drinks </title>
+{% endblock %}
+
+{% block content %}
+  <body>
+    <p>&nbsp;</p>
+    <ul>
+      <li class="li_category"><a href="/menu/pizza/">Pizza</a></li>
+      <li class="li_category_active">Drinks</li>
+    </ul>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <div class="row">
+      {% for drinks in drinks %}
+      <div class="column">
+          <img src="{{ drinks.image.url }}" alt="Picture of pizza" class="pizza_picture">
+          <h2 id="pizzatext">{{ drinks.name}}</h2>
+          <p class="toppings">{{ drinks.description}}</p>
+          <p class="price">{{ drinks.price}}$</p>
+          <div class="order_button">
+            <button type="button" onclick="alert('Cart has been updated!')">Order Now</button>
+          </div>
+        </div>
+        {% endfor %}
+    </div>
+
+  </body>
+{% endblock %}
